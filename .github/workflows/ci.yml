@@ -21,7 +21,7 @@ jobs:
       - name: Run backend linting
         run: |
           docker compose -f docker-compose.yml -f docker-compose.override.yml build --quiet backend
-          docker compose -f docker-compose.yml -f docker-compose.override.yml run --rm backend ./lint.sh
+          docker compose -f docker-compose.yml -f docker-compose.override.yml run --rm backend bash lint.sh
 
   backend-test:
     name: Backend Tests
@@ -38,8 +38,8 @@ jobs:
           PROJECT_NAME="test"
           COMPOSE_FILES="-f docker-compose.yml -f docker-compose.override.yml -f docker-compose.test.yml"
           docker compose -p $PROJECT_NAME $COMPOSE_FILES up -d --build db backend
-          docker compose -p $PROJECT_NAME $COMPOSE_FILES exec backend ./seed.sh
-          docker compose -p $PROJECT_NAME $COMPOSE_FILES exec backend ./tests.sh
+          docker compose -p $PROJECT_NAME $COMPOSE_FILES exec backend bash seed.sh
+          docker compose -p $PROJECT_NAME $COMPOSE_FILES exec backend bash tests.sh
           docker compose -p $PROJECT_NAME $COMPOSE_FILES down -v
 
   frontend-lint:
@@ -55,7 +55,7 @@ jobs:
       - name: Run frontend linting
         run: |
           docker compose -f docker-compose.yml -f docker-compose.override.yml build --quiet frontend
-          docker compose -f docker-compose.yml -f docker-compose.override.yml run --rm frontend ./lint.sh
+          docker compose -f docker-compose.yml -f docker-compose.override.yml run --rm frontend bash lint.sh
 
   frontend-test:
     name: Frontend Tests
@@ -73,7 +73,7 @@ jobs:
           PROJECT_NAME="test"
           COMPOSE_FILES="-f docker-compose.yml -f docker-compose.override.yml -f docker-compose.test.yml"
           docker compose -p $PROJECT_NAME $COMPOSE_FILES up -d --build
-          docker compose -p $PROJECT_NAME $COMPOSE_FILES exec backend ./seed.sh
-          docker compose -p $PROJECT_NAME $COMPOSE_FILES exec -T frontend ./tests.sh
+          docker compose -p $PROJECT_NAME $COMPOSE_FILES exec backend bash seed.sh
+          docker compose -p $PROJECT_NAME $COMPOSE_FILES exec -T frontend bash tests.sh
           docker compose -p $PROJECT_NAME $COMPOSE_FILES down -v
 
