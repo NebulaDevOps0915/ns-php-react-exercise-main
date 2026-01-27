@@ -1,0 +1,22 @@
+# Composer dependencies
+/vendor/
+composer.phar
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.phpunit.cache
+coverage/
+
+# Environment
+.env
+.env.local

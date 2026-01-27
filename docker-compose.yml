@@ -1,0 +1,30 @@
+services:
+  db:
+    image: postgres:18.1
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_DB: ${DB_NAME:-fintech_db}
+      POSTGRES_USER: ${DB_USER:-fintech_user}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-fintech_password}
+      PGDATA: /var/lib/postgresql/data/pg18
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-fintech_user} -d ${DB_NAME:-fintech_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  frontend:
+    build: ./frontend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      VITE_BACKEND_URL: ${VITE_BACKEND_URL:-http://backend:8000}
+      PLAYWRIGHT_BASE_URL: ${PLAYWRIGHT_BASE_URL:-http://localhost:3000}
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  postgres_data:

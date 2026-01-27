@@ -1,0 +1,19 @@
+services:
+  backend:
+    build: ./backend
+    command: bash -c "composer install && php init.php && php -S 0.0.0.0:8000 -t public"
+    volumes:
+      - ./backend:/app
+      - ./data:/data
+      - /app/vendor
+    environment:
+      DATABASE_URL: postgresql://${DB_USER:-fintech_user}:${DB_PASSWORD:-fintech_password}@db:5432/${DB_NAME:-fintech_db}?sslmode=disable
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 30s

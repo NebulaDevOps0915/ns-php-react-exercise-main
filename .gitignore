@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Python virtual environments
+venv/
+.venv/
+env/
+__pycache__/
+*.pyc
+
+# Go build outputs
+backend/server
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Environment variables
+.env
+
+# Build outputs
+dist/
+build/
+*.egg-info/
+
+# Test outputs
+.pytest_cache/
+playwright-report/
+test-results/
+coverage/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

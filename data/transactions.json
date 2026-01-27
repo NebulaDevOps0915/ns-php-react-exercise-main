@@ -1,0 +1,202 @@
+[
+  {
+    "description": "Groceries",
+    "amount": 50.25,
+    "type": "debit",
+    "category": "Food",
+    "user_id": 1,
+    "date": "2025-10-26T10:00:00"
+  },
+  {
+    "description": "Salary",
+    "amount": 2500.00,
+    "type": "credit",
+    "category": "Income",
+    "user_id": 1,
+    "date": "2025-10-25T09:30:00"
+  },
+  {
+    "description": "Rent",
+    "amount": 1200.00,
+    "type": "debit",
+    "category": "Housing",
+    "user_id": 1,
+    "date": "2025-10-24T14:00:00"
+  },
+  {
+    "description": "Coffee",
+    "amount": 4.50,
+    "type": "debit",
+    "category": "Food",
+    "user_id": 1,
+    "date": "2025-10-23T11:15:00"
+  },
+  {
+    "description": "Freelance Payment",
+    "amount": 750.00,
+    "type": "credit",
+    "category": "Income",
+    "user_id": 1,
+    "date": "2025-10-22T16:45:00"
+  },
+  {
+    "description": "Books",
+    "amount": 30.00,
+    "type": "debit",
+    "category": "Education",
+    "user_id": 1,
+    "date": "2025-10-21T13:00:00"
+  },
+  {
+    "description": "Electricity Bill",
+    "amount": 85.70,
+    "type": "debit",
+    "category": "Utilities",
+    "user_id": 1,
+    "date": "2025-10-20T10:00:00"
+  },
+  {
+    "description": "Dinner with Friends",
+    "amount": 70.00,
+    "type": "debit",
+    "category": "Social",
+    "user_id": 1,
+    "date": "2025-10-19T19:30:00"
+  },
+  {
+    "description": "Transportation",
+    "amount": 20.00,
+    "type": "debit",
+    "category": "Travel",
+    "user_id": 1,
+    "date": "2025-10-18T08:00:00"
+  },
+  {
+    "description": "Online Course",
+    "amount": 150.00,
+    "type": "debit",
+    "category": "Education",
+    "user_id": 1,
+    "date": "2025-10-17T12:00:00"
+  },
+  {
+    "description": "Shopping",
+    "amount": 75.50,
+    "type": "debit",
+    "category": "Shopping",
+    "user_id": 1,
+    "date": "2025-10-16T15:00:00"
+  },
+  {
+    "description": "Gym Membership",
+    "amount": 40.00,
+    "type": "debit",
+    "category": "Health",
+    "user_id": 1,
+    "date": "2025-10-15T09:00:00"
+  },
+  {
+    "description": "Dividend Income",
+    "amount": 150.00,
+    "type": "credit",
+    "category": "Investments",
+    "user_id": 1,
+    "date": "2025-10-14T11:00:00"
+  },
+  {
+    "description": "Concert Tickets",
+    "amount": 100.00,
+    "type": "debit",
+    "category": "Entertainment",
+    "user_id": 1,
+    "date": "2025-10-13T20:00:00"
+  },
+  {
+    "description": "Utility Bill",
+    "amount": 60.00,
+    "type": "debit",
+    "category": "Utilities",
+    "user_id": 1,
+    "date": "2025-10-12T14:30:00"
+  },
+  {
+    "description": "Refund",
+    "amount": 25.00,
+    "type": "credit",
+    "category": "Shopping",
+    "user_id": 1,
+    "date": "2025-10-11T10:00:00"
+  },
+  {
+    "description": "Lunch",
+    "amount": 15.75,
+    "type": "debit",
+    "category": "Food",
+    "user_id": 1,
+    "date": "2025-10-10T12:45:00"
+  },
+  {
+    "description": "Subscription",
+    "amount": 12.99,
+    "type": "debit",
+    "category": "Entertainment",
+    "user_id": 1,
+    "date": "2025-10-09T09:00:00"
+  },
+  {
+    "description": "Bonus",
+    "amount": 500.00,
+    "type": "credit",
+    "category": "Income",
+    "user_id": 1,
+    "date": "2025-10-08T17:00:00"
+  },
+  {
+    "description": "Gas",
+    "amount": 45.00,
+    "type": "debit",
+    "category": "Transport",
+    "user_id": 1,
+    "date": "2025-10-07T08:30:00"
+  },
+  {
+    "description": "Healthcare",
+    "amount": 80.00,
+    "type": "debit",
+    "category": "Health",
+    "user_id": 1,
+    "date": "2025-10-06T10:00:00"
+  },
+  {
+    "description": "Gift",
+    "amount": 50.00,
+    "type": "credit",
+    "category": "Income",
+    "user_id": 1,
+    "date": "2025-10-05T14:00:00"
+  },
+  {
+    "description": "Software License",
+    "amount": 29.99,
+    "type": "debit",
+    "category": "Work",
+    "user_id": 1,
+    "date": "2025-10-04T11:00:00"
+  },
+  {
+    "description": "Travel Expenses",
+    "amount": 120.00,
+    "type": "debit",
+    "category": "Travel",
+    "user_id": 1,
+    "date": "2025-10-03T09:00:00"
+  },
+  {
+    "description": "Hobby Supplies",
+    "amount": 35.00,
+    "type": "debit",
+    "category": "Hobbies",
+    "user_id": 1,
+    "date": "2025-10-02T16:00:00"
+  }
+]
