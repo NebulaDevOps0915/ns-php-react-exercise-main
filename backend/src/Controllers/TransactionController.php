@@ -184,12 +184,12 @@ class TransactionController
         $size = isset($params['size']) ? max(1, (int)$params['size']) : 10;
         $sortBy = $params['sort_by'] ?? 'date';
         $sortOrder = strtolower($params['sort_order'] ?? 'desc');
-        
+
         // Validate sort_order
         if (!in_array($sortOrder, ['asc', 'desc'])) {
             $sortOrder = 'desc';
         }
-        
+
         // Validate sort_by column to prevent SQL injection and map to actual column name
         $sortColumnMap = [
             'date' => 't.date',
@@ -199,11 +199,11 @@ class TransactionController
             'category_id' => 't.category_id',
         ];
         $sortColumn = $sortColumnMap[$sortBy] ?? 't.date';
-        
+
         $offset = ($page - 1) * $size;
-        
+
         $conn = $this->em->getConnection();
-        
+
         // Get total count
         $countSql = "
             SELECT COUNT(DISTINCT t.id) as total
@@ -212,7 +212,7 @@ class TransactionController
         ";
         $totalResult = $conn->fetchAssociative($countSql);
         $total = (int)$totalResult['total'];
-        
+
         // Get paginated and sorted data with tags
         $sql = "
             SELECT 
@@ -239,13 +239,13 @@ class TransactionController
             ORDER BY " . $sortColumn . " " . strtoupper($sortOrder) . "
             LIMIT :limit OFFSET :offset
         ";
-        
+
         $stmt = $conn->prepare($sql);
         $stmt->bindValue('limit', $size, \PDO::PARAM_INT);
         $stmt->bindValue('offset', $offset, \PDO::PARAM_INT);
         $result = $stmt->executeQuery();
         $rows = $result->fetchAllAssociative();
-        
+
         // Format the response
         $items = [];
         foreach ($rows as $row) {
@@ -253,7 +253,7 @@ class TransactionController
             if (!is_array($tags)) {
                 $tags = [];
             }
-            
+
             $items[] = [
                 'id' => (int)$row['id'],
                 'description' => $row['description'],
@@ -269,12 +269,12 @@ class TransactionController
                 'tags' => $tags,
             ];
         }
-        
+
         $responseData = [
             'items' => $items,
             'total' => $total,
         ];
-        
+
         $response->getBody()->write(json_encode($responseData, JSON_PRESERVE_ZERO_FRACTION));
         return $response->withHeader('Content-Type', 'application/json');
     }
