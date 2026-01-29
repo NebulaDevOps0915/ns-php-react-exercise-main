@@ -8,7 +8,6 @@ function App() {
   const [userActivityCount, setUserActivityCount] = useState(0);
 
   const handleUserProfileClick = () => {
-    console.log("User profile clicked!");
     setUserActivityCount(prev => prev + 1);
   };
 

@@ -16,7 +16,16 @@ $conn = $em->getConnection();
 
 // Drop and recreate tables to handle schema changes
 $conn->executeStatement("DROP TABLE IF EXISTS transaction_tags CASCADE");
-$conn->executeStatement("TRUNCATE TABLE IF EXISTS transactions, categories, tags RESTART IDENTITY CASCADE");
+// PostgreSQL doesn't support IF EXISTS with TRUNCATE, so check if tables exist first
+$tablesExist = $conn->fetchOne("
+    SELECT COUNT(*) FROM information_schema.tables 
+    WHERE table_schema = 'public' 
+    AND table_name IN ('transactions', 'categories', 'tags')
+") == 3;
+
+if ($tablesExist) {
+    $conn->executeStatement("TRUNCATE TABLE transactions, categories, tags RESTART IDENTITY CASCADE");
+}
 
 echo "Loading seed data from centralized JSON files..." . PHP_EOL;
 
@@ -60,7 +69,7 @@ foreach ($transactionsData as $data) {
     $transaction->setCategory($categories[$data['category']]);
     $transaction->setUserId($data['user_id']);
     $transaction->setDate(new DateTime($data['date']));
-    
+
     // Assign tags based on transaction characteristics
     if ($data['type'] === 'credit' && strpos(strtolower($data['description']), 'salary') !== false) {
         $transaction->addTag($tags['work']);
@@ -84,7 +93,7 @@ foreach ($transactionsData as $data) {
     } else {
         $transaction->addTag($tags['personal']);
     }
-    
+
     $em->persist($transaction);
     $transactions[] = $transaction;
 }
@@ -93,3 +102,4 @@ $em->flush();
 
 echo "Database seeded successfully." . PHP_EOL;
 echo "Seeded " . count($categoriesData) . " categories, " . count($tagNames) . " tags, and " . count($transactionsData) . " transactions" . PHP_EOL;
+

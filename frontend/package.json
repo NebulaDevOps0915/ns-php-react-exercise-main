@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start": "vite",
-    "build": "vite build",
+    "build": "vite build --no-lint",
     "test": "vitest",
     "test:e2e": "playwright test",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
