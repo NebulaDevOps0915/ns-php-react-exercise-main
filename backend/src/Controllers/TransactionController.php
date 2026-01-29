@@ -215,7 +215,7 @@ class TransactionController
 
         // Get paginated and sorted data with tags
         $sql = "
-            SELECT 
+            SELECT
                 t.id,
                 t.description,
                 t.amount,
@@ -279,3 +279,4 @@ class TransactionController
         return $response->withHeader('Content-Type', 'application/json');
     }
 }
+

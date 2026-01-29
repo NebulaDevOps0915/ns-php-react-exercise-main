@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo, useCallback } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 
 interface Transaction {
   id: number;
@@ -40,14 +40,6 @@ const TransactionList: React.FC = React.memo(() => {
     fetchTransactions();
   }, []);
 
-  if (loading) {
-    return <div className="text-gray-700">Loading transactions...</div>;
-  }
-
-  if (error) {
-    return <div className="text-red-500">Error: {error}</div>;
-  }
-
   const filteredTransactions = useMemo(() => {
     if (filterType === 'all') {
       return transactions;
@@ -80,6 +72,14 @@ const TransactionList: React.FC = React.memo(() => {
       </tr>
     ));
   }, [filteredTransactions]);
+
+  if (loading) {
+    return <div className="text-gray-700">Loading transactions...</div>;
+  }
+
+  if (error) {
+    return <div className="text-red-500">Error: {error}</div>;
+  }
 
   return (
     <div className="bg-white shadow overflow-hidden sm:rounded-lg mt-8">
